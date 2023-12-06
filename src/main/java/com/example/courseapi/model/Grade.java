@@ -11,19 +11,25 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Course {
+public class Grade {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @Column
-    private String courseName;
+    private float processGrade;
+
+    @Column
+    private float midtermGrade;
+
+    @Column
+    private float finalGrade;
 
     @ManyToOne
-    @JoinColumn(name = "subject_id", nullable = false)
-    private Subject subject;
+    @JoinColumn(name = "course_id", nullable = false)
+    private Course course;
 
     @ManyToOne
-    @JoinColumn(name = "teacher_id", nullable = false)
-    private Teacher teacher;
+    @JoinColumn(name = "student_id", nullable = false)
+    private Student student;
 }
