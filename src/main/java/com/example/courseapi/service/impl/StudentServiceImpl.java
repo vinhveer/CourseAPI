@@ -37,7 +37,7 @@ public class StudentServiceImpl implements StudentService {
                 .build();
 
         studentRepository.save(student);
-        return ResponseEntity.ok().body("Student added sucessfully!");
+        return ResponseEntity.ok(student);
     }
 
     @Override
