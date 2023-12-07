@@ -37,7 +37,7 @@ public class SubjectController
         return subjectService.DeleteSubjectById(id);
     }
 
-    @PostMapping("/edit-id/{id}")
+    @PutMapping("/edit-id/{id}")
     public ResponseEntity<Object> EditSubjectById(@PathVariable long id, @RequestBody SubjectRequest subjectRequest)
     {
         return subjectService.EditSubjectById(subjectRequest, id);

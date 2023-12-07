@@ -19,11 +19,11 @@ public class Course {
     @Column
     private String courseName;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "subject_id", nullable = false)
     private Subject subject;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "teacher_id", nullable = false)
     private Teacher teacher;
 }

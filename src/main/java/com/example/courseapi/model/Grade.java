@@ -25,11 +25,11 @@ public class Grade {
     @Column
     private float finalGrade;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "course_id", nullable = false)
     private Course course;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "student_id", nullable = false)
     private Student student;
 }
