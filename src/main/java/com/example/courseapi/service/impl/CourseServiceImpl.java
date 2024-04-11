@@ -56,23 +56,18 @@ public class CourseServiceImpl implements CourseService {
 
     @Override
     public ResponseEntity<Object> EditCourseById(CourseRequest courseRequest, long id) {
-        // Kiểm tra xem course có tồn tại hay không
         Course existingCourse = courseRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Course not found with id: " + id));
 
-        // Lấy references của Subject và Teacher từ repository
         Subject subject = subjectRepository.getReferenceById(courseRequest.getSubjectId());
         Teacher teacher = teacherRepository.getReferenceById(courseRequest.getTeacherId());
 
-        // Cập nhật thông tin của course
         existingCourse.setCourseName(courseRequest.getCourseName());
         existingCourse.setSubject(subject);
         existingCourse.setTeacher(teacher);
 
-        // Lưu lại thông tin đã cập nhật
         courseRepository.save(existingCourse);
 
         return ResponseEntity.ok("Update successfully!");
     }
-
 }
